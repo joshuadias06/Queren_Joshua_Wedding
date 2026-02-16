@@ -1,0 +1,12 @@
+:root {
+  /* Cores principais */
+  --color-primary: #9375c1;
+  --color-secondary: #c19858;
+
+  /* Neutras */
+  --color-bg: #f5f3f1;
+  --color-text: #2a2a2a;
+  --color-muted: #8a8a8a;
+
+  --font-elegant: 'Cormorant Garamond', serif;
+}

@@ -8,11 +8,9 @@ export function HomeScreen() {
   const { state, actions } = useHomeViewModel();
 
   return (
-    <div className="min-h-screen bg-neutral-100 flex justify-center">
-      
+    <div className="min-h-screen bg-[var(--color-bg)] flex justify-center">
       {/* App Container (simula largura de celular) */}
       <div className="w-full max-w-[430px] bg-white min-h-screen shadow-xl">
-
         <HeroSection />
 
         <InvitationInfo
@@ -31,7 +29,6 @@ export function HomeScreen() {
           onGifts={actions.openGifts}
           onMaps={actions.openMaps}
         />
-
       </div>
     </div>
   );
