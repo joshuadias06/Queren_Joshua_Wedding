@@ -57,7 +57,7 @@ export function useHomeViewModel() {
       time: "Às 16:00 horas",
       location: "Chacará Recanto Tropical",
       address:
-        "Rua Henrique Hessel, Rodoanel Mário Covas, 13 - Parelheiros, São Paulo - SP, 04882-010",
+        "Rua Henrique Hessel, Rodoanel Mário Covas, 13 - Parelheiros, 04882-010",
     },
     actions,
   };
