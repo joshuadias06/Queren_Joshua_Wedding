@@ -4,48 +4,48 @@ type CountdownState = {
   days: number;
   hours: number;
   minutes: number;
+  seconds: number;
 };
 
 export function useHomeViewModel() {
-  const weddingDate = new Date("2024-10-15T17:00:00");
+  // 20 de junho de 2026 às 16:00 (horário Brasil -03:00)
+  const weddingDate = new Date("2026-06-20T16:00:00-03:00");
 
   const [countdown, setCountdown] = useState<CountdownState>({
     days: 0,
     hours: 0,
     minutes: 0,
+    seconds: 0,
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const diff = weddingDate.getTime() - now.getTime();
+    const updateCountdown = () => {
+      const now = Date.now();
+      const diff = weddingDate.getTime() - now;
 
-      if (diff <= 0) return;
+      if (diff <= 0) {
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (diff / (1000 * 60 * 60)) % 24
-      );
-      const minutes = Math.floor(
-        (diff / (1000 * 60)) % 60
-      );
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
-      setCountdown({ days, hours, minutes });
-    }, 1000);
+      setCountdown({ days, hours, minutes, seconds });
+    };
 
+    updateCountdown(); // já calcula na primeira renderização
+
+    const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
   }, []);
 
   const actions = {
-    confirmPresence: () => {
-      alert("Confirmar presença");
-    },
-    openGifts: () => {
-      alert("Lista de presentes");
-    },
-    openMaps: () => {
-      window.open("https://maps.google.com", "_blank");
-    },
+    confirmPresence: () => alert("Confirmar presença"),
+    openGifts: () => alert("Lista de presentes"),
+    openMaps: () => window.open("https://maps.google.com", "_blank"),
   };
 
   return {
@@ -56,7 +56,8 @@ export function useHomeViewModel() {
       date: "20 de Junho de 2026",
       time: "Às 16:00 horas",
       location: "Chacará Recanto Tropical",
-      address: "Rua Henrique Hessel, Rodoanel Mário Covas, 13 - Parelheiros, São Paulo - SP, 04882-010",
+      address:
+        "Rua Henrique Hessel, Rodoanel Mário Covas, 13 - Parelheiros, São Paulo - SP, 04882-010",
     },
     actions,
   };
