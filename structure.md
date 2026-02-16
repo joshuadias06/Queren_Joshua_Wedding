@@ -1,0 +1,63 @@
+src/
+  app/
+    di/
+      container.ts
+    router/
+      routes.tsx
+    providers/
+      AppProviders.tsx
+    styles/
+      tokens.css
+  core/
+    http/
+      httpClient.ts
+    errors/
+      AppError.ts
+    utils/
+      format.ts
+    types/
+      Result.ts
+
+  domain/
+    entities/
+      LocationInfo.ts
+    repositories/
+      LocationRepository.ts
+    usecases/
+      GetLocationInfo.ts
+
+  data/
+    datasources/
+      location/
+        locationLocalDataSource.ts
+    mappers/
+      locationMapper.ts
+    repositories/
+      LocationRepositoryImpl.ts
+
+  presentation/
+    design-system/
+      components/
+        IconButton.tsx
+        Button.tsx
+        Card.tsx
+        Typography.tsx
+      theme/
+        colors.ts
+        spacing.ts
+        typography.ts
+    navigation/
+      AppNavigator.tsx
+    screens/
+      location/
+        LocationScreen.tsx
+        LocationViewModel.ts
+        components/
+          MapCard.tsx
+          TimelineItem.tsx
+    state/
+      ui/
+        useSnack.ts
+
+  main.tsx
+  index.css
