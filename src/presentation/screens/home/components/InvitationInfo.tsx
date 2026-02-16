@@ -31,7 +31,7 @@ export function InvitationInfo({
 
 
       {/* & */}
-      <p className="text-2xl text-[var(--color-secondary)] my-3">&</p>
+      <p className="text-2xl text-[var(--color-secondary)] my-3" style={{ fontFamily: "var(--font-elegant)" }}>&</p>
 
       {/* Nome da Noiva */}
       <h1 className="text-5xl text-[var(--color-primary)]"
@@ -76,7 +76,7 @@ export function InvitationInfo({
             LOCAL
           </p>
           <p className="mt-1">{location}</p>
-          <p className="italic text-sm text-[var(--color-muted)] mt-1">
+          <p className="italic text-sm text-[var(--color-muted)] mt-1 whitespace-pre-line">
             {address}
           </p>
         </div>

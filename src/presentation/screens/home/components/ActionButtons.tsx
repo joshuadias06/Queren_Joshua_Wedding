@@ -42,7 +42,7 @@ export function ActionButtons({
 
       {/* Assinatura */}
       <p className="text-center text-sm italic text-[var(--color-muted)] mt-10">
-        Com carinho, Queren & Joshua
+        Com carinho, Queren e Joshua
       </p>
     </div>
   );

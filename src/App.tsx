@@ -1,10 +1,10 @@
-import { HomeScreen } from "./presentation/screens/home/HomeScreen";
 import { MobileOnly } from "./presentation/components/MobileOnly";
+import { AppNavigator } from "./presentation/navigation/AppNavigator";
 
 function App() {
   return (
     <MobileOnly maxWidth={430}>
-      <HomeScreen />
+      <AppNavigator />
     </MobileOnly>
   );
 }

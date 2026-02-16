@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type CountdownState = {
   days: number;
@@ -8,6 +9,8 @@ type CountdownState = {
 };
 
 export function useHomeViewModel() {
+  const navigate = useNavigate();
+
   // 20 de junho de 2026 às 16:00 (horário Brasil -03:00)
   const weddingDate = new Date("2026-06-20T16:00:00-03:00");
 
@@ -36,16 +39,25 @@ export function useHomeViewModel() {
       setCountdown({ days, hours, minutes, seconds });
     };
 
-    updateCountdown(); // já calcula na primeira renderização
-
+    updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
   }, []);
 
+  const address =
+    "Rua Henrique Hessel, Rodoanel Mário Covas, 13 - Parelheiros, São Paulo - SP, 04882-010";
+
   const actions = {
-    confirmPresence: () => alert("Confirmar presença"),
+    confirmPresence: () => navigate("/rsvp"),
+
     openGifts: () => alert("Lista de presentes"),
-    openMaps: () => window.open("https://maps.google.com", "_blank"),
+
+    openMaps: () => {
+      const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        address
+      )}`;
+      window.open(url, "_blank");
+    },
   };
 
   return {
@@ -56,8 +68,7 @@ export function useHomeViewModel() {
       date: "20 de Junho de 2026",
       time: "Às 16:00 horas",
       location: "Chacará Recanto Tropical",
-      address:
-        "Rua Henrique Hessel, Rodoanel Mário Covas, 13 - Parelheiros, 04882-010",
+      address,
     },
     actions,
   };
