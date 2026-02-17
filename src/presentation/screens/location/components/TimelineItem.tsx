@@ -8,10 +8,10 @@ type Props = {
 
 export function TimelineItem({ icon, title, time, lines, isLast }: Props) {
   return (
-    <div className="relative pl-16 mt-8">
-      {/* Linha vertical */}
+    <div className={`relative pl-16 ${isLast ? "" : "pb-12"}`}>
+      {/* Linha vertical (vai do centro do ícone até o “espaço” abaixo) */}
       {!isLast && (
-        <div className="absolute left-6 top-10 bottom-0 w-px bg-[var(--color-secondary)] opacity-40" />
+        <div className="absolute left-6 top-6 bottom-0 w-px bg-[var(--color-secondary)] opacity-40" />
       )}
 
       {/* Ícone */}
@@ -28,9 +28,7 @@ export function TimelineItem({ icon, title, time, lines, isLast }: Props) {
         {title}
       </h3>
 
-      <p className="text-[var(--color-primary)] text-sm mt-1">
-        {time}
-      </p>
+      <p className="text-[var(--color-primary)] text-sm mt-1">{time}</p>
 
       <div
         className="mt-2 text-sm text-[var(--color-text)] leading-relaxed"

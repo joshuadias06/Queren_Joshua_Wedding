@@ -19,12 +19,26 @@ export function RsvpScreen() {
           onChange={actions.setFullName}
         />
 
+        {form.companions.map((companion, index) => (
+          <TextField
+            key={index}
+            label={`ACOMPANHANTE ${index + 1}`}
+            placeholder={`Digite o nome do acompanhante ${index + 1}`}
+            value={companion}
+            onChange={(value) => actions.setCompanion(index, value)}
+          />
+        ))}
+
+
         <Stepper
           label="NÚMERO DE ACOMPANHANTES"
           value={form.guests}
           onInc={actions.incGuests}
           onDec={actions.decGuests}
+          min={1}
+          max={6}
         />
+
 
         <TextField
           label="RECADO AOS NOIVOS (OPCIONAL)"
@@ -41,7 +55,7 @@ export function RsvpScreen() {
           style={{ fontFamily: "var(--font-body)" }}
         >
           POR FAVOR, CONFIRME ATÉ
-          <br /> 
+          <br />
           31 DE MAIO DE 2026
         </p>
 

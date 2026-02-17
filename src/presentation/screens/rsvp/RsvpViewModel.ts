@@ -12,8 +12,11 @@ type WeddingInfo = {
 type FormState = {
   fullName: string;
   guests: number;
+  companions: string[];
   message: string;
 };
+
+const MAX_GUESTS = 6;
 
 export function useRsvpViewModel() {
   const weddingInfo: WeddingInfo = useMemo(
@@ -32,6 +35,7 @@ export function useRsvpViewModel() {
   const [form, setForm] = useState<FormState>({
     fullName: "",
     guests: 1,
+    companions: [],
     message: "",
   });
 
@@ -40,23 +44,47 @@ export function useRsvpViewModel() {
       setForm((p) => ({ ...p, fullName: value })),
 
     incGuests: () =>
-      setForm((p) => ({ ...p, guests: Math.min(20, p.guests + 1) })),
+      setForm((p) => {
+        if (p.guests >= MAX_GUESTS) return p;
+
+        return {
+          ...p,
+          guests: p.guests + 1,
+          companions: [...p.companions, ""], // adiciona novo campo
+        };
+      }),
 
     decGuests: () =>
-      setForm((p) => ({ ...p, guests: Math.max(1, p.guests - 1) })),
+      setForm((p) => {
+        if (p.guests <= 1) return p;
 
-    setMessage: (value: string) => setForm((p) => ({ ...p, message: value })),
+        return {
+          ...p,
+          guests: p.guests - 1,
+          companions: p.companions.slice(0, -1), // remove último acompanhante
+        };
+      }),
+
+    setCompanion: (index: number, value: string) =>
+      setForm((p) => {
+        const updated = [...p.companions];
+        updated[index] = value;
+        return { ...p, companions: updated };
+      }),
+
+    setMessage: (value: string) =>
+      setForm((p) => ({ ...p, message: value })),
 
     submit: () => {
-      // depois: chamar usecase / API
-      // por enquanto: só validação simples
       if (!form.fullName.trim()) {
-        alert("Por favor, informe seu nome.");
+        alert("Informe seu nome.");
         return;
       }
 
       alert(
-        `Presença confirmada!\n\nNome: ${form.fullName}\nAcompanhantes: ${form.guests}\nMensagem: ${form.message || "-"}`
+        `Confirmado!\n\nTitular: ${form.fullName}\nAcompanhantes: ${form.companions.join(
+          ", "
+        )}`
       );
     },
   };
