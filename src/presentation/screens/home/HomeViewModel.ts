@@ -52,12 +52,7 @@ export function useHomeViewModel() {
 
     openGifts: () => navigate("/gifts"),
 
-    openMaps: () => {
-      const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-        address
-      )}`;
-      window.open(url, "_blank");
-    },
+    openMaps: () => navigate("/location"),
   };
 
   return {

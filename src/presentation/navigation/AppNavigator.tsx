@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomeScreen } from "../screens/home/HomeScreen";
 import { RsvpScreen } from "../screens/rsvp/RsvpScreen";
 import { GiftsScreen } from "../screens/gifts/GiftScreen";
+import { LocationScreen } from "../screens/location/LocationScreen";
 
 export function AppNavigator() {
   return (
@@ -10,6 +11,7 @@ export function AppNavigator() {
         <Route path="/" element={<HomeScreen />} />
         <Route path="/rsvp" element={<RsvpScreen />} />
         <Route path="/gifts" element={<GiftsScreen />} />
+        <Route path="/location" element={<LocationScreen />} />
       </Routes>
     </BrowserRouter>
   );
