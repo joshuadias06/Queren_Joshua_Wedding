@@ -15,11 +15,11 @@ export function HeroSection() {
 
       {/* Conteúdo */}
       <div className="absolute bottom-16 w-full text-center">
-        <p className="tracking-[0.4em] text-xs text-[var(--color-secondary)]">
+        <p className="tracking-[0.4em] text-xs text-white/80">
           SAVE THE DATE
         </p>
 
-        <div className="mt-3 h-12 w-px bg-[var(--color-secondary)] mx-auto opacity-80" />
+        <div className="mt-3 h-12 w-px bg-white mx-auto opacity-80" />
       </div>
     </div>
   );

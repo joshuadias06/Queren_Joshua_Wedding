@@ -50,7 +50,7 @@ export function useHomeViewModel() {
   const actions = {
     confirmPresence: () => navigate("/rsvp"),
 
-    openGifts: () => alert("Lista de presentes"),
+    openGifts: () => navigate("/gifts"),
 
     openMaps: () => {
       const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
