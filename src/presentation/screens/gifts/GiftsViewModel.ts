@@ -21,12 +21,12 @@ export function useGiftsViewModel() {
         description:
           "Preparamos uma lista especial com itens para o nosso novo lar.",
         buttonText: "Acessar Lista",
-        url: "https://www.casasbahia.com.br/",
+        url: "https://listas.casasbahia.com.br/querenejoshua20-06-2026",
       },
 
       pix: {
         label: "CONTRIBUIÇÃO VIA PIX",
-        key: "querenjoshua@casamento.com",
+        key: "querenjoshuawedding@gmail.com",
       },
 
       suggestionsTitle: "OUTRAS SUGESTÕES",
@@ -49,7 +49,7 @@ export function useGiftsViewModel() {
         },
       ] as Suggestion[],
 
-      footer: "Com amor,",
+      footer: "Com carinho,",
       footerNames: "Queren & Joshua",
     };
   }, []);

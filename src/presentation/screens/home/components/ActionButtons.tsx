@@ -34,16 +34,28 @@ export function ActionButtons({
       {/* Ver no Google Maps (ÍCONE LOCALIZAÇÃO) */}
       <button
         onClick={onMaps}
-        className="w-full flex items-center justify-center gap-2 text-[var(--color-muted)] text-sm mt-4"
+        className="w-full flex items-center justify-center gap-2 border border-[var(--color-secondary)] text-[var(--color-secondary)] py-4 rounded-xl transition-all hover:bg-[var(--color-secondary)] hover:text-white"
       >
-        <Icon name="location_on" size={18} />
+        <Icon name="location_on" size={20} />
         Ver no Google Maps
       </button>
 
       {/* Assinatura */}
-      <p className="text-center text-sm italic text-[var(--color-muted)] mt-10">
-        Com carinho, Queren e Joshua
-      </p>
+              <div className="mt-10 text-center px-6">
+          <p
+            className="text-[10px] tracking-[0.45em] text-[var(--color-secondary)]"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            COM CARINHO,
+          </p>
+
+          <p
+            className="mt-2 text-2xl text-[var(--color-primary)]"
+            style={{ fontFamily: "var(--font-elegant)" }}
+          >
+            Queren e Joshua
+          </p>
+        </div>
     </div>
   );
 }

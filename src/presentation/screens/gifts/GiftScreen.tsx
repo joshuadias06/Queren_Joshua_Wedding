@@ -69,8 +69,6 @@ export function GiftsScreen() {
             {state.footerNames}
           </p>
         </div>
-
-        {/* (opcional) imagem floral embaixo: depois adicionamos como asset */}
       </div>
     </div>
   );
