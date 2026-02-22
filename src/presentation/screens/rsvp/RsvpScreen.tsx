@@ -4,15 +4,17 @@ import { Stepper } from "./components/Stepper";
 import { PrimaryButton } from "./components/PrimaryButton";
 import { useRsvpViewModel } from "./RsvpViewModel";
 import { RsvpConfirmModal } from "./components/RsvpConfirmModal";
+import { useNavigate } from "react-router-dom";
 
 export function RsvpScreen() {
+  const navigate = useNavigate();
   const { weddingInfo, form, actions, successOpen, successPayload } =
     useRsvpViewModel();
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] flex justify-center">
       <div className="w-full max-w-[430px] min-h-screen bg-white shadow-xl px-6 pb-12">
-        <RsvpHeader />
+        <RsvpHeader onBack={() => navigate(-1)} />
 
         <TextField
           label="NOME COMPLETO"

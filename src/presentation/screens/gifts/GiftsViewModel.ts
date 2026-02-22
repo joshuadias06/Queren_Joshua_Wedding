@@ -58,7 +58,7 @@ export function useGiftsViewModel() {
           id: "tours",
           title: "Passeio dos Noivos.",
           subtitle: "Ajuda na viagem",
-          price: "R$ 500,00",
+          price: "R$ 300,00",
           iconName: "terrain",
         },
         
