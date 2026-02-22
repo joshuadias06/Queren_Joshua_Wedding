@@ -1,3 +1,5 @@
+import qrCode from "../../../../assets/qrcode.png";
+
 type Props = {
   label: string;
   pixKey: string;
@@ -16,12 +18,14 @@ export function PixCard({ label, pixKey, onCopy }: Props) {
         </span>
       </div>
 
-      {/* QR placeholder */}
-      <div className="mt-5 rounded-2xl border-2 border-dashed border-[var(--color-primary)]/20 p-6 flex justify-center">
-        <div className="h-36 w-36 rounded-xl bg-[var(--color-bg)] flex items-center justify-center">
-          <span className="material-symbols-outlined text-[var(--color-primary)]">
-            qr_code_2
-          </span>
+      {/* QR real */}
+      <div className="mt-6 flex justify-center">
+        <div className="rounded-3xl bg-white shadow-lg p-4">
+          <img
+            src={qrCode}
+            alt="QR Code PIX"
+            className="w-56 h-56 object-contain"
+          />
         </div>
       </div>
 

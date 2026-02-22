@@ -3,9 +3,11 @@ import { TextField } from "./components/TextField";
 import { Stepper } from "./components/Stepper";
 import { PrimaryButton } from "./components/PrimaryButton";
 import { useRsvpViewModel } from "./RsvpViewModel";
+import { RsvpConfirmModal } from "./components/RsvpConfirmModal";
 
 export function RsvpScreen() {
-  const { weddingInfo, form, actions } = useRsvpViewModel();
+  const { weddingInfo, form, actions, successOpen, successPayload } =
+    useRsvpViewModel();
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] flex justify-center">
@@ -29,7 +31,6 @@ export function RsvpScreen() {
           />
         ))}
 
-
         <Stepper
           label="NÚMERO DE ACOMPANHANTES"
           value={form.guests}
@@ -38,7 +39,6 @@ export function RsvpScreen() {
           min={1}
           max={6}
         />
-
 
         <TextField
           label="RECADO AOS NOIVOS (OPCIONAL)"
@@ -59,21 +59,38 @@ export function RsvpScreen() {
           31 DE MAIO DE 2026
         </p>
 
-        {/* Detalhe: infos do evento (se quiser mostrar) */}
+        {/* Detalhe: infos do evento */}
         <div className="mt-10 text-center">
-          <p className="text-sm text-[var(--color-text)]" style={{ fontFamily: "var(--font-body)" }}>
+          <p
+            className="text-sm text-[var(--color-text)]"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
             {weddingInfo.location}
           </p>
+
           <p
             className="mt-1 italic text-sm text-[var(--color-muted)] whitespace-pre-line"
             style={{ fontFamily: "var(--font-body)" }}
           >
             {weddingInfo.address}
           </p>
-          <p className="mt-2 text-sm text-[var(--color-text)]" style={{ fontFamily: "var(--font-body)" }}>
+
+          <p
+            className="mt-2 text-sm text-[var(--color-text)]"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
             {weddingInfo.time}
           </p>
         </div>
+
+        {/* POP-UP de confirmação */}
+        <RsvpConfirmModal
+          open={successOpen}
+          onClose={actions.closeSuccess}
+          name={successPayload.name}
+          companions={successPayload.companions}
+          message={successPayload.message}
+        />
       </div>
     </div>
   );

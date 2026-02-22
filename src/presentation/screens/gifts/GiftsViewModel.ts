@@ -41,12 +41,27 @@ export function useGiftsViewModel() {
           iconName: "restaurant",
         },
         {
-          id: "flight-tickets",
+          id: "outbound-flights",
           title: "Passagens Aéreas",
-          subtitle: "Ajuda na viagem",
+          subtitle: "Ida para a viagem",
           price: "R$ 500,00",
           iconName: "flight",
         },
+        {
+          id: "return-flights",
+          title: "Passagens Aéreas",
+          subtitle: "Volta da viagem",
+          price: "R$ 500,00",
+          iconName: "flight",
+        },
+        {
+          id: "tours",
+          title: "Passeio dos Noivos.",
+          subtitle: "Ajuda na viagem",
+          price: "R$ 500,00",
+          iconName: "terrain",
+        },
+        
       ] as Suggestion[],
 
       footer: "Com carinho,",

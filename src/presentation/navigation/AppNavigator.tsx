@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HomeScreen } from "../screens/home/HomeScreen";
 import { RsvpScreen } from "../screens/rsvp/RsvpScreen";
 import { GiftsScreen } from "../screens/gifts/GiftScreen";
@@ -15,6 +15,8 @@ export function AppNavigator() {
         <Route path="/rsvp" element={<RsvpScreen />} />
         <Route path="/gifts" element={<GiftsScreen />} />
         <Route path="/location" element={<LocationScreen />} />
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
