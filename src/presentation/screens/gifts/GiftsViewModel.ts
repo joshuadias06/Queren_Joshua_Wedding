@@ -89,12 +89,6 @@ export function useGiftsViewModel() {
         alert("Chave PIX copiada!");
       }
     },
-
-    giftSuggestion: (id: string) => {
-      alert(`Presentear: ${id}`);
-    },
-
-    viewSuggestions: () => alert("Ver sugestões"),
   };
 
   return { state, actions };
