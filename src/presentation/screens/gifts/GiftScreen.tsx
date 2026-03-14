@@ -47,7 +47,6 @@ export function GiftsScreen() {
                 title={s.title}
                 subtitle={s.subtitle}
                 price={s.price}
-                onGift={() => actions.giftSuggestion(s.id)}
               />
             ))}
           </div>
