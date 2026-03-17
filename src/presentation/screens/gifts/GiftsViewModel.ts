@@ -21,7 +21,7 @@ export function useGiftsViewModel() {
         description:
           "Preparamos uma lista especial com itens para o nosso novo lar.",
         buttonText: "Acessar Lista",
-        url: "https://listas.casasbahia.com.br/querenejoshua20-06-2026",
+        url: "https://www.querodecasamento.com.br/lista-de-casamento/querenjoshuawedding",
       },
 
       pix: {
