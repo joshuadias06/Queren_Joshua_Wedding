@@ -3,7 +3,7 @@ import { AppNavigator } from "./presentation/navigation/AppNavigator";
 
 function App() {
   return (
-    <MobileOnly maxWidth={430}>
+    <MobileOnly mobileMaxWidth={1180} tabletMaxWidth={1180}>
       <AppNavigator />
     </MobileOnly>
   );

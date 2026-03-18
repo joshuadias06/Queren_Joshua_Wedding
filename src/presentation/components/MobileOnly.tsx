@@ -139,8 +139,8 @@ export function MobileOnly({
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="mx-auto w-full max-w-screen-md">
+    <div className="min-h-screen bg-[var(--color-bg)]">
+      <div className="mx-auto w-full max-w-[1180px]">
         {children}
       </div>
     </div>
