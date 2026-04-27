@@ -1,4 +1,4 @@
-import map from "../../../../assets/map.jpg";
+import map from "../../../../assets/hero.jpg";
 
 export function MapCard() {
   return (
