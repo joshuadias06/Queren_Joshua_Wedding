@@ -20,7 +20,7 @@ export function InvitationInfo({
 
       {/* Texto superior */}
       <p className="tracking-[0.3em] text-xs text-[var(--color-primary)]">
-        VOCÊ É NOSSO CONVIDADO PARA O CASAMENTO DE
+        VOCÊ É NOSSO CONVIDADO
       </p>
 
       {/* Nome do Noivo */}
