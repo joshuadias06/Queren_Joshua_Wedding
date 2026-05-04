@@ -85,7 +85,7 @@ export function useGiftsViewModel() {
         {
           id: "kitchen-appliances",
           title: "Eletrodomésticos",
-          subtitle: "Para nossa nova cozinha",
+          subtitle: "Para nossa a nova cozinha",
           price: "R$ 150,00",
           iconName: "kitchen",
         },
