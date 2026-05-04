@@ -44,14 +44,14 @@ export function useGiftsViewModel() {
           id: "outbound-flights",
           title: "Passagens Aéreas",
           subtitle: "Ida para a viagem",
-          price: "R$ 500,00",
+          price: "R$ 300,00",
           iconName: "flight",
         },
         {
           id: "return-flights",
           title: "Passagens Aéreas",
           subtitle: "Volta da viagem",
-          price: "R$ 500,00",
+          price: "R$ 300,00",
           iconName: "flight",
         },
         {
@@ -61,6 +61,48 @@ export function useGiftsViewModel() {
           price: "R$ 300,00",
           iconName: "terrain",
         },
+        {
+          id: "suitcases",
+          title: "Malas de Viagem",
+          subtitle: "Para muitas aventuras",
+          price: "R$ 300,00",
+          iconName: "work_outline",
+        },
+        {
+          id: "honeymoon-fund",
+          title: "DaySpa",
+          subtitle: "Para relaxar juntos",
+          price: "R$ 100,00",
+          iconName: "card_giftcard",
+        },
+        {
+          id: "home-decor",
+          title: "Para nosso lar",
+          subtitle: "Um presente cheio de afeto",
+          price: "R$ 80,00",
+          iconName: "home",
+        },
+        {
+          id: "kitchen-appliances",
+          title: "Eletrodomésticos",
+          subtitle: "Para nossa nova cozinha",
+          price: "R$ 150,00",
+          iconName: "kitchen",
+        },
+        {
+          id: "gift-card",
+          title: "Presente com Amor",
+          subtitle: "Para celebramos a nova fase",
+          price: "R$ 100,00",
+          iconName: "card_giftcard",
+        },
+        {
+          id: "details-surprise",
+          title: "Detalhe Surpresa",
+          subtitle: "Para tornar nosso dia ainda mais especial",
+          price: "R$ 50,00",
+          iconName: "star",
+        }
         
       ] as Suggestion[],
 
