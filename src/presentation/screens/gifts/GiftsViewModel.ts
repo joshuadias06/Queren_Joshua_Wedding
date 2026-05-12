@@ -1,14 +1,18 @@
 import { useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type Suggestion = {
   id: string;
   title: string;
   subtitle: string;
   price: string;
-  iconName: string; // material symbol name
+  iconName: string;
 };
 
 export function useGiftsViewModel() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const state = useMemo(() => {
     return {
       titleTop: "NOSSA LISTA",
@@ -30,7 +34,6 @@ export function useGiftsViewModel() {
       },
 
       suggestionsTitle: "OUTRAS SUGESTÕES",
-
 
       suggestions: [
         {
@@ -102,8 +105,7 @@ export function useGiftsViewModel() {
           subtitle: "Para tornar nosso dia ainda mais especial",
           price: "R$ 50,00",
           iconName: "star",
-        }
-        
+        },
       ] as Suggestion[],
 
       footer: "Com carinho,",
@@ -112,22 +114,29 @@ export function useGiftsViewModel() {
   }, []);
 
   const actions = {
-    goBack: () => history.back(),
+    goBack: () => {
+      if (location.key === "default") {
+        navigate("/", { replace: true });
+      } else {
+        navigate(-1);
+      }
+    },
 
-    openExternalList: () => window.open(state.externalList.url, "_blank"),
+    openExternalList: () =>
+      window.open(state.externalList.url, "_blank"),
 
     copyPixKey: async () => {
       try {
         await navigator.clipboard.writeText(state.pix.key);
         alert("Chave PIX copiada!");
       } catch {
-        // fallback
         const textarea = document.createElement("textarea");
         textarea.value = state.pix.key;
         document.body.appendChild(textarea);
         textarea.select();
         document.execCommand("copy");
         document.body.removeChild(textarea);
+
         alert("Chave PIX copiada!");
       }
     },

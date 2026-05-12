@@ -4,17 +4,20 @@ import { Stepper } from "./components/Stepper";
 import { PrimaryButton } from "./components/PrimaryButton";
 import { useRsvpViewModel } from "./RsvpViewModel";
 import { RsvpConfirmModal } from "./components/RsvpConfirmModal";
-import { useNavigate } from "react-router-dom";
 
 export function RsvpScreen() {
-  const navigate = useNavigate();
-  const { weddingInfo, form, actions, successOpen, successPayload } =
-    useRsvpViewModel();
+  const {
+    weddingInfo,
+    form,
+    actions,
+    successOpen,
+    successPayload,
+  } = useRsvpViewModel();
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] flex justify-center">
       <div className="w-full max-w-[430px] min-h-screen bg-white shadow-xl px-6 pb-12">
-        <RsvpHeader onBack={() => navigate(-1)} />
+        <RsvpHeader onBack={actions.goBack} />
 
         <TextField
           label="NOME COMPLETO"
@@ -29,7 +32,9 @@ export function RsvpScreen() {
             label={`ACOMPANHANTE ${index + 1}`}
             placeholder={`Digite o nome do acompanhante ${index + 1}`}
             value={companion}
-            onChange={(value) => actions.setCompanion(index, value)}
+            onChange={(value) =>
+              actions.setCompanion(index, value)
+            }
           />
         ))}
 
@@ -50,7 +55,10 @@ export function RsvpScreen() {
           multiline
         />
 
-        <PrimaryButton title="Confirmar Presença" onClick={actions.submit} />
+        <PrimaryButton
+          title="Confirmar Presença"
+          onClick={actions.submit}
+        />
 
         <p
           className="mt-10 text-center text-xs tracking-[0.25em] text-[var(--color-muted)]"
@@ -61,7 +69,6 @@ export function RsvpScreen() {
           31 DE MAIO DE 2026
         </p>
 
-        {/* Detalhe: infos do evento */}
         <div className="mt-10 text-center">
           <p
             className="text-sm text-[var(--color-text)]"
@@ -85,7 +92,6 @@ export function RsvpScreen() {
           </p>
         </div>
 
-        {/* POP-UP de confirmação */}
         <RsvpConfirmModal
           open={successOpen}
           onClose={actions.closeSuccess}

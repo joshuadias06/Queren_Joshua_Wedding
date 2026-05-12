@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type WeddingInfo = {
   bride: string;
@@ -26,7 +26,8 @@ type SuccessPayload = {
 };
 
 export function useRsvpViewModel() {
-  const navigate = useNavigate(); // 👈 ADICIONADO
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const weddingInfo: WeddingInfo = useMemo(
     () => ({
@@ -49,19 +50,30 @@ export function useRsvpViewModel() {
   });
 
   const [successOpen, setSuccessOpen] = useState(false);
-  const [successPayload, setSuccessPayload] = useState<SuccessPayload>({
-    name: "",
-    companions: [],
-    message: "",
-  });
+
+  const [successPayload, setSuccessPayload] =
+    useState<SuccessPayload>({
+      name: "",
+      companions: [],
+      message: "",
+    });
 
   const actions = {
+    goBack: () => {
+      if (location.key === "default") {
+        navigate("/", { replace: true });
+      } else {
+        navigate(-1);
+      }
+    },
+
     setFullName: (value: string) =>
       setForm((p) => ({ ...p, fullName: value })),
 
     incGuests: () =>
       setForm((p) => {
         if (p.guests >= MAX_GUESTS) return p;
+
         return {
           ...p,
           guests: p.guests + 1,
@@ -72,6 +84,7 @@ export function useRsvpViewModel() {
     decGuests: () =>
       setForm((p) => {
         if (p.guests <= 1) return p;
+
         return {
           ...p,
           guests: p.guests - 1,
@@ -83,20 +96,27 @@ export function useRsvpViewModel() {
       setForm((p) => {
         const updated = [...p.companions];
         updated[index] = value;
-        return { ...p, companions: updated };
+
+        return {
+          ...p,
+          companions: updated,
+        };
       }),
 
     setMessage: (value: string) =>
-      setForm((p) => ({ ...p, message: value })),
+      setForm((p) => ({
+        ...p,
+        message: value,
+      })),
 
-    // 🔥 ALTERAÇÃO AQUI
     closeSuccess: () => {
       setSuccessOpen(false);
-      navigate("/"); // 👈 Redireciona para Home
+      navigate("/");
     },
 
     submit: async () => {
       const fullName = form.fullName.trim();
+
       if (!fullName) {
         alert("Informe seu nome.");
         return;
@@ -115,7 +135,9 @@ export function useRsvpViewModel() {
       const c = form.companions.map((x) => x.trim());
 
       const body = new URLSearchParams();
+
       body.append(ENTRY_1, fullName);
+
       if (c[0]) body.append(ENTRY_2, c[0]);
       if (c[1]) body.append(ENTRY_3, c[1]);
       if (c[2]) body.append(ENTRY_4, c[2]);
@@ -126,7 +148,10 @@ export function useRsvpViewModel() {
         await fetch(FORM_RESPONSE_URL, {
           method: "POST",
           mode: "no-cors",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          headers: {
+            "Content-Type":
+              "application/x-www-form-urlencoded",
+          },
           body,
         });
 
@@ -145,10 +170,18 @@ export function useRsvpViewModel() {
           message: "",
         });
       } catch (err) {
-        alert("Não consegui enviar agora. Tente novamente.");
+        alert(
+          "Não consegui enviar agora. Tente novamente."
+        );
       }
     },
   };
 
-  return { weddingInfo, form, actions, successOpen, successPayload };
+  return {
+    weddingInfo,
+    form,
+    actions,
+    successOpen,
+    successPayload,
+  };
 }
