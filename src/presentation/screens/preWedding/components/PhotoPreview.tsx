@@ -49,9 +49,6 @@ export function PhotoPreview({
         className="
           w-full
           max-w-2xl
-          bg-white
-          rounded-[32px]
-          overflow-hidden
           shadow-[0_20px_80px_rgba(0,0,0,0.25)]
         "
         onClick={(e) => e.stopPropagation()}
@@ -62,6 +59,8 @@ export function PhotoPreview({
             flex items-center justify-between
             px-5 py-4
             border-b border-gray-100
+            bg-white
+            rounded-t-[32px]
           "
         >
           <div className="flex items-center gap-4">
@@ -114,11 +113,12 @@ export function PhotoPreview({
         {/* Foto */}
         <div
           className="
+            bg-white
+            rounded-b-[32px]
             flex
             items-center
             justify-center
-            bg-white
-            p-2
+            p-4
           "
         >
           <img
@@ -126,8 +126,9 @@ export function PhotoPreview({
             alt="pre-wedding"
             className="
               max-w-full
-              max-h-[calc(100vh-140px)]
+              max-h-[calc(100vh-180px)]
               object-contain
+              rounded-2xl
             "
           />
         </div>
