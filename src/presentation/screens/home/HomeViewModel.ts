@@ -53,6 +53,8 @@ export function useHomeViewModel() {
     openGifts: () => navigate("/gifts"),
 
     openMaps: () => navigate("/location"),
+
+    openPreWedding: () => navigate("/pre-wedding"),
   };
 
   return {

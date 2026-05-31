@@ -28,6 +28,7 @@ export function HomeScreen() {
           onConfirm={actions.confirmPresence}
           onGifts={actions.openGifts}
           onMaps={actions.openMaps}
+          onPreWedding={actions.openPreWedding}
         />
       </div>
     </div>

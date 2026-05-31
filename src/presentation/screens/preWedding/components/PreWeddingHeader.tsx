@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type Props = {
   profileImage: string;
 };
@@ -28,10 +30,18 @@ export function PreWeddingHeader({ profileImage }: Props) {
           </p>
         </div>
       </div>
-
       {/* Bio */}
-      <div className="mt-5 text-sm text-gray-700 leading-relaxed">
-        <p>Nosso pré-wedding 💜</p>
+      <div className="mt-6">
+        <p
+          className="text-xl text-purple-700"
+          style={{ fontFamily: "var(--font-elegant)" }}
+        >
+          Um capítulo especial da nossa história ✨
+        </p>
+
+        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+          Registrando momentos, sorrisos e a contagem regressiva para o nosso grande dia.
+        </p>
       </div>
 
       {/* Botão */}
@@ -39,6 +49,14 @@ export function PreWeddingHeader({ profileImage }: Props) {
         <button className="w-full py-3 rounded-lg font-medium text-white bg-purple-500 hover:bg-purple-600 transition shadow-sm">
           Deixe sua mensagem para os noivos
         </button>
+      </div>
+
+      <div className="mt-3">
+        <Link to="/rsvp">
+          <button className="w-full py-3 rounded-lg font-medium border border-purple-500 text-purple-600 hover:bg-purple-50 transition shadow-sm">
+            Confirmar sua presença
+          </button>
+        </Link>
       </div>
     </div>
   );
